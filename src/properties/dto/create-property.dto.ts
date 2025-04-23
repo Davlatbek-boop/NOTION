@@ -1,4 +1,8 @@
+import { IsString } from "class-validator";
+
 export class CreatePropertyDto {
-    name: string;
-    description: string;
+  @IsString()
+  name: string;
+  @IsString()
+  description: string;
 }

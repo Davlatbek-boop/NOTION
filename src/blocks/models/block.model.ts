@@ -2,6 +2,7 @@ import { BelongsTo, BelongsToMany, Column, DataType, ForeignKey, Model, Table } 
 import { BlockProperty } from "src/block-properties/models/block-property.model"
 import { Property } from "src/properties/models/property.model"
 import { Type } from "src/types/models/type.model"
+import { User } from "src/users/models/user.model"
 
 
 interface IBlockCreationAttr{
@@ -20,10 +21,12 @@ export class Block extends Model<Block, IBlockCreationAttr>{
     })
     declare id: number
     
+    @ForeignKey(()=> User   )
     @Column({
         type: DataType.INTEGER
     })
     declare userId: number
+
     @Column({
         type: DataType.INTEGER
     })
@@ -41,6 +44,9 @@ export class Block extends Model<Block, IBlockCreationAttr>{
 
     @BelongsTo(()=> Type)
     type: Type
+
+    @BelongsTo(()=> User)
+    user: User
 
     @BelongsToMany(()=> Property, ()=> BlockProperty)
     properties: Property[]

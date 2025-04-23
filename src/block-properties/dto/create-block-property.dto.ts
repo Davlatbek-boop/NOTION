@@ -1,5 +1,10 @@
+import { IsNumber, IsString } from "class-validator";
+
 export class CreateBlockPropertyDto {
-    blockId: number
-    propertyId: number
-    value: string
+  @IsNumber()
+  blockId: number;
+  @IsNumber()
+  propertyId: number;
+  @IsString()
+  value: string;
 }
