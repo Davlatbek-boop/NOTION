@@ -19,6 +19,7 @@ export class AuthAdminService {
 
   async generateToken(admin: Admin) {
     const payload = {
+      id: admin.id,
       name: admin.full_name,
       email: admin.email,
       role: admin.role,

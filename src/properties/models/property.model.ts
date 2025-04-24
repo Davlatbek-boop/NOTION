@@ -1,3 +1,4 @@
+import { ApiProperty } from "@nestjs/swagger";
 import {
   BelongsToMany,
   Column,
@@ -15,18 +16,28 @@ interface IPropertyCreationAttr {
 
 @Table({ tableName: "properties" })
 export class Property extends Model<Property, IPropertyCreationAttr> {
+  @ApiProperty({
+    example: 1,
+    description: "property unique ID si"
+  })
   @Column({
     type: DataType.INTEGER,
     primaryKey: true,
     autoIncrement: true,
   })
   declare id: number;
-
+   @ApiProperty({
+      example: "property nomi",
+      description: "Qanday property"
+    })
   @Column({
     type: DataType.STRING,
   })
   declare name: string;
-
+@ApiProperty({
+    example: "description nomi",
+    description: "Qanday description"
+  })
   @Column({
     type: DataType.TEXT,
   })
