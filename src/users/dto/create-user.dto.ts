@@ -30,10 +30,4 @@ export class CreateUserDto {
   // @IsStrongPassword()
   hashed_password: string;
 
-  @ApiProperty({
-    example: "file/path/img.png",
-    description: "Foydalanuvchi rasmi fayl yo'li",
-  })
-  @IsString()
-  photo: string;
 }

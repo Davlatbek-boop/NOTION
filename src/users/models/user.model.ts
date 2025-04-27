@@ -1,6 +1,9 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { Column, DataType, HasMany, Model, Table } from "sequelize-typescript";
 import { Block } from "src/blocks/models/block.model";
+import { Workspace } from "../../workspace/models/workspace.model";
+import { TeamSpace } from "../../team-space/models/team-space.model";
+import { TeamSpaceMember } from "../../team-space-members/models/team-space-member.model";
 
 interface IUserCreationAttr {
   first_name: string;
@@ -103,4 +106,14 @@ export class User extends Model<User, IUserCreationAttr> {
 
   @HasMany(() => Block)
   block: Block[];
+
+  @HasMany(() => Workspace)
+  workspace: Workspace[];
+
+  @HasMany(()=> TeamSpace)
+  teamspace: TeamSpace[]
+
+  @HasMany(()=> TeamSpaceMember)
+  teamSpaceMember: TeamSpaceMember[]
+
 }

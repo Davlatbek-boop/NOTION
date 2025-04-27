@@ -14,6 +14,14 @@ import { User } from "./users/models/user.model";
 import { AdminModule } from './admin/admin.module';
 import { Admin } from "./admin/models/admin.model";
 import { AuthModule } from './auth/auth.module';
+import { WorkspaceModule } from './workspace/workspace.module';
+import { Workspace } from "./workspace/models/workspace.model";
+import { PermissionModule } from './permission/permission.module';
+import { Permission } from "./permission/models/permission.model";
+import { TeamSpaceModule } from './team-space/team-space.module';
+import { TeamSpace } from "./team-space/models/team-space.model";
+import { TeamSpaceMembersModule } from './team-space-members/team-space-members.module';
+import { TeamSpaceMember } from "./team-space-members/models/team-space-member.model";
 
 @Module({
   imports: [
@@ -25,7 +33,7 @@ import { AuthModule } from './auth/auth.module';
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
-      models: [Type, Property, Block, BlockProperty, User, Admin],
+      models: [Type, Property, Block, BlockProperty, User, Admin, Workspace, Permission, TeamSpace, TeamSpaceMember],
       autoLoadModels: true,
       sync: { alter: true },
       logging: false,
@@ -38,6 +46,10 @@ import { AuthModule } from './auth/auth.module';
     UsersModule,
     AdminModule,
     AuthModule,
+    WorkspaceModule,
+    PermissionModule,
+    TeamSpaceModule,
+    TeamSpaceMembersModule,
   ],
   controllers: [],
   providers: [],

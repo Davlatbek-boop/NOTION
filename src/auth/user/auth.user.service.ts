@@ -9,12 +9,14 @@ import * as bcrypt from "bcrypt";
 import { CreateUserDto } from "src/users/dto/create-user.dto";
 import { SignInUser } from "./dto/sign-in-user.dto";
 import { User } from "src/users/models/user.model";
+import { FileService } from "../../file/file.service";
 
 @Injectable()
 export class AuthUserService {
   constructor(
     private readonly userService: UsersService,
-    private readonly jwtService: JwtService
+    private readonly jwtService: JwtService,
+    private readonly fileService: FileService
   ) {}
 
   private async generateToken(user: User) {
@@ -28,7 +30,7 @@ export class AuthUserService {
     return { token: this.jwtService.sign(payload) };
   }
 
-  async signUp(createUserDto: CreateUserDto) {
+  async signUp(createUserDto: CreateUserDto, image: any) {
     const user = await this.userService.findByEmail(createUserDto.email);
 
     if (user) {
@@ -38,9 +40,10 @@ export class AuthUserService {
     const hashedPassword = await bcrypt.hash(createUserDto.hashed_password, 7);
     createUserDto.hashed_password = hashedPassword;
 
-    const newUser = await this.userService.create(createUserDto);
+      const fileName = await this.fileService.saveFile(image);
+  
+      return this.userService.create(createUserDto, image);
 
-    return newUser;
   }
 
   async signIn(signInUser: SignInUser) {

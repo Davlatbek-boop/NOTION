@@ -7,10 +7,11 @@ import { AuthAdminController } from "./admin/auth.admin.controller";
 import { AuthAdminService } from "./admin/auth.admin.service";
 import { ConfigModule } from "@nestjs/config";
 import { AdminModule } from "src/admin/admin.module";
+import { FileModule } from "../file/file.module";
 
 @Module({
   imports: [
-    UsersModule, AdminModule,
+    UsersModule, AdminModule, FileModule,
     ConfigModule.forRoot({ envFilePath: ".env", isGlobal: true }),
     JwtModule.register({
       global: true,

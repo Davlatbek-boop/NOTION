@@ -1,15 +1,21 @@
-import { Injectable } from '@nestjs/common';
-import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
-import { InjectModel } from '@nestjs/sequelize';
-import { User } from './models/user.model';
+import { Injectable } from "@nestjs/common";
+import { CreateUserDto } from "./dto/create-user.dto";
+import { UpdateUserDto } from "./dto/update-user.dto";
+import { InjectModel } from "@nestjs/sequelize";
+import { User } from "./models/user.model";
+import { FileService } from "../file/file.service";
 
 @Injectable()
 export class UsersService {
-  constructor(@InjectModel(User) private readonly userModel: typeof User){}
+  constructor(
+    @InjectModel(User) private readonly userModel: typeof User,
+    private readonly fileService: FileService
+  ) {}
 
-  create(createUserDto: CreateUserDto) {
-    return this.userModel.create(createUserDto);
+  async create(createUserDto: CreateUserDto, photo: any) {
+    const fileName = await this.fileService.saveFile(photo);
+
+    return this.userModel.create({ ...createUserDto, photo: fileName });
   }
 
   findAll() {
@@ -21,14 +27,17 @@ export class UsersService {
   }
 
   update(id: number, updateUserDto: UpdateUserDto) {
-    return this.userModel.update(updateUserDto, {where: {id}, returning: true});
+    return this.userModel.update(updateUserDto, {
+      where: { id },
+      returning: true,
+    });
   }
 
   remove(id: number) {
-    return this.userModel.destroy({where:{id}});
+    return this.userModel.destroy({ where: { id } });
   }
 
   findByEmail(email: string) {
-    return this.userModel.findOne({where:{email}});
+    return this.userModel.findOne({ where: { email } });
   }
 }
