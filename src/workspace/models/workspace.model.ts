@@ -10,6 +10,7 @@ import {
 } from "sequelize-typescript";
 import { User } from "../../users/models/user.model";
 import { TeamSpace } from "../../team-space/models/team-space.model";
+import { WorkspaceMember } from "../../workspace-members/models/workspace-member.model";
 
 interface IWorkspaceCreationAttr {
   userId: number;
@@ -82,4 +83,7 @@ export class Workspace extends Model<Workspace, IWorkspaceCreationAttr> {
 
   @HasMany(()=> TeamSpace)
   teamSpace: TeamSpace[]
+
+  @HasMany(()=> WorkspaceMember)
+  workspaceMember: WorkspaceMember[]
 }

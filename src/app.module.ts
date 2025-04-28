@@ -7,21 +7,28 @@ import { ConfigModule } from "@nestjs/config";
 import { Type } from "./types/models/type.model";
 import { Property } from "./properties/models/property.model";
 import { Block } from "./blocks/models/block.model";
-import { BlockPropertiesModule } from './block-properties/block-properties.module';
+import { BlockPropertiesModule } from "./block-properties/block-properties.module";
 import { BlockProperty } from "./block-properties/models/block-property.model";
-import { UsersModule } from './users/users.module';
+import { UsersModule } from "./users/users.module";
 import { User } from "./users/models/user.model";
-import { AdminModule } from './admin/admin.module';
+import { AdminModule } from "./admin/admin.module";
 import { Admin } from "./admin/models/admin.model";
-import { AuthModule } from './auth/auth.module';
-import { WorkspaceModule } from './workspace/workspace.module';
+import { AuthModule } from "./auth/auth.module";
+import { WorkspaceModule } from "./workspace/workspace.module";
 import { Workspace } from "./workspace/models/workspace.model";
-import { PermissionModule } from './permission/permission.module';
+import { PermissionModule } from "./permission/permission.module";
 import { Permission } from "./permission/models/permission.model";
-import { TeamSpaceModule } from './team-space/team-space.module';
+import { TeamSpaceModule } from "./team-space/team-space.module";
 import { TeamSpace } from "./team-space/models/team-space.model";
-import { TeamSpaceMembersModule } from './team-space-members/team-space-members.module';
+import { TeamSpaceMembersModule } from "./team-space-members/team-space-members.module";
 import { TeamSpaceMember } from "./team-space-members/models/team-space-member.model";
+import { WorkspaceMembersModule } from "./workspace-members/workspace-members.module";
+import { WorkspaceMember } from "./workspace-members/models/workspace-member.model";
+import { DevicesModule } from './devices/devices.module';
+import { Device } from "./devices/models/device.model";
+import { GroupsModule } from './groups/groups.module';
+import { Group } from "./groups/models/group.model";
+import { GroupMember } from "./groups/models/group-member.model";
 
 @Module({
   imports: [
@@ -33,7 +40,22 @@ import { TeamSpaceMember } from "./team-space-members/models/team-space-member.m
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
-      models: [Type, Property, Block, BlockProperty, User, Admin, Workspace, Permission, TeamSpace, TeamSpaceMember],
+      models: [
+        Type,
+        Property,
+        Block,
+        BlockProperty,
+        User,
+        Admin,
+        Workspace,
+        Permission,
+        TeamSpace,
+        TeamSpaceMember,
+        WorkspaceMember,
+        Device,
+        Group,
+        GroupMember
+      ],
       autoLoadModels: true,
       sync: { alter: true },
       logging: false,
@@ -50,6 +72,9 @@ import { TeamSpaceMember } from "./team-space-members/models/team-space-member.m
     PermissionModule,
     TeamSpaceModule,
     TeamSpaceMembersModule,
+    WorkspaceMembersModule,
+    DevicesModule,
+    GroupsModule,
   ],
   controllers: [],
   providers: [],
