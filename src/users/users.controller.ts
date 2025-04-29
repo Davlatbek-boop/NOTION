@@ -14,10 +14,10 @@ import { UsersService } from "./users.service";
 import { CreateUserDto } from "./dto/create-user.dto";
 import { UpdateUserDto } from "./dto/update-user.dto";
 import { ApiOperation } from "@nestjs/swagger";
-import { JwtAuthGuard } from "src/common/guards/jwt-auth.guard";
-import { JwtUserSelfGuard } from "src/common/guards/jwt-user-self.guard";
-import { RolesGuard } from "src/common/guards/roles.guard";
-import { Roles } from "src/common/decorators/roles-auth.decorator";
+import { JwtAuthGuard } from "../common/guards/jwt-auth.guard";
+import { JwtUserSelfGuard } from "../common/guards/jwt-user-self.guard";
+import { RolesGuard } from "../common/guards/roles.guard";
+import { Roles } from "../common/decorators/roles-auth.decorator";
 import { FileInterceptor } from "@nestjs/platform-express";
 
 @Controller("users")

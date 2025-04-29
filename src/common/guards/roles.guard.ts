@@ -7,7 +7,7 @@ import {
 import { Reflector } from "@nestjs/core";
 import { permission } from "process";
 import { Observable, of } from "rxjs";
-import { ROLES_KEY } from "src/app.constants";
+import { ROLES_KEY } from "../../app.constants";
 
 @Injectable()
 export class RolesGuard implements CanActivate {

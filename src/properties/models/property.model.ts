@@ -6,8 +6,8 @@ import {
   Model,
   Table,
 } from "sequelize-typescript";
-import { BlockProperty } from "src/block-properties/models/block-property.model";
-import { Block } from "src/blocks/models/block.model";
+import { BlockProperty } from "../../block-properties/models/block-property.model";
+import { Block } from "../../blocks/models/block.model";
 
 interface IPropertyCreationAttr {
   name: string;

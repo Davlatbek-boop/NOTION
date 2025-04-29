@@ -8,10 +8,11 @@ import {
   Model,
   Table,
 } from "sequelize-typescript";
-import { BlockProperty } from "src/block-properties/models/block-property.model";
-import { Property } from "src/properties/models/property.model";
-import { Type } from "src/types/models/type.model";
-import { User } from "src/users/models/user.model";
+import { User } from "../../users/models/user.model";
+import { Property } from "../../properties/models/property.model";
+import { BlockProperty } from "../../block-properties/models/block-property.model";
+import { Type } from "../../types/models/type.model";
+
 
 interface IBlockCreationAttr {
   typeId: number;

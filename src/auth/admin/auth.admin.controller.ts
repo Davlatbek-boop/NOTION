@@ -1,6 +1,6 @@
 import { Body, Controller, Post } from "@nestjs/common";
 import { AuthAdminService } from "./auth.admin.service";
-import { CreateAdminDto } from "src/admin/dto/create-admin.dto";
+import { CreateAdminDto } from "../../admin/dto/create-admin.dto";
 import { SignInAdmin } from "./dto/sign-in-admin.dto";
 import { ApiOperation } from "@nestjs/swagger";
 

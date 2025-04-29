@@ -4,12 +4,12 @@ import {
   UnauthorizedException,
 } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
-import { UsersService } from "src/users/users.service";
 import * as bcrypt from "bcrypt";
-import { CreateUserDto } from "src/users/dto/create-user.dto";
 import { SignInUser } from "./dto/sign-in-user.dto";
-import { User } from "src/users/models/user.model";
 import { FileService } from "../../file/file.service";
+import { UsersService } from "../../users/users.service";
+import { User } from "../../users/models/user.model";
+import { CreateUserDto } from "../../users/dto/create-user.dto";
 
 @Injectable()
 export class AuthUserService {
@@ -41,8 +41,10 @@ export class AuthUserService {
     createUserDto.hashed_password = hashedPassword;
 
       const fileName = await this.fileService.saveFile(image);
+
+      const newUser = await this.userService.create(createUserDto, image)
   
-      return this.userService.create(createUserDto, image);
+      return this.generateToken(newUser);
 
   }
 

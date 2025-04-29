@@ -4,11 +4,11 @@ import {
   UnauthorizedException,
 } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
-import { AdminService } from "src/admin/admin.service";
-import { CreateAdminDto } from "src/admin/dto/create-admin.dto";
+import { AdminService } from "../../admin/admin.service";
+import { CreateAdminDto } from "../../admin/dto/create-admin.dto";
 import { SignInAdmin } from "./dto/sign-in-admin.dto";
 import * as bcrypt from "bcrypt";
-import { Admin } from "src/admin/models/admin.model";
+import { Admin } from "../../admin/models/admin.model";
 
 @Injectable()
 export class AuthAdminService {

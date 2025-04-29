@@ -5,7 +5,7 @@ import {
   UploadedFile,
   UseInterceptors,
 } from "@nestjs/common";
-import { CreateUserDto } from "src/users/dto/create-user.dto";
+import { CreateUserDto } from "../../users/dto/create-user.dto";
 import { SignInUser } from "./dto/sign-in-user.dto";
 import { AuthUserService } from "./auth.user.service";
 import { ApiOperation } from "@nestjs/swagger";

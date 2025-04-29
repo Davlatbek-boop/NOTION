@@ -1,6 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { BelongsTo, BelongsToMany, Column, DataType, HasMany, Model, Table } from "sequelize-typescript";
-import { Block } from "src/blocks/models/block.model";
 import { Workspace } from "../../workspace/models/workspace.model";
 import { TeamSpace } from "../../team-space/models/team-space.model";
 import { TeamSpaceMember } from "../../team-space-members/models/team-space-member.model";
@@ -8,6 +7,7 @@ import { WorkspaceMember } from "../../workspace-members/models/workspace-member
 import { Device } from "../../devices/models/device.model";
 import { Group } from "../../groups/models/group.model";
 import { GroupMember } from "../../groups/models/group-member.model";
+import { Block } from "../../blocks/models/block.model";
 
 interface IUserCreationAttr {
   first_name: string;

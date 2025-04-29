@@ -1,6 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { Column, DataType, HasMany, Model, Table } from "sequelize-typescript";
-import { Block } from "src/blocks/models/block.model";
+import { Block } from "../../blocks/models/block.model";
 
 interface ITypeCreationAttr {
   name: string;
